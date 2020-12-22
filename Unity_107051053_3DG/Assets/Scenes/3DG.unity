@@ -5431,6 +5431,8 @@ MonoBehaviour:
   word: {fileID: 2056597318}
   text: {fileID: 1915426910}
   playerin: 0
+  sc: 0.1
+  state: 2
 --- !u!4 &1196602143 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400010, guid: fe55e5a0c1bcd72488aa4508bea6f93b,
@@ -5914,8 +5916,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -15}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 129.59, y: -20.789}
+  m_SizeDelta: {x: 259.1774, y: 41.57721}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1915426910
 MonoBehaviour:
