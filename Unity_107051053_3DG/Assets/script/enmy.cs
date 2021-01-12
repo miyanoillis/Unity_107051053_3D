@@ -21,6 +21,9 @@ public class enmy : MonoBehaviour
     public float atkln;
     public Transform atkpt;
     private RaycastHit rhit;
+    [Header("ATK"), Range(0f, 5f)]
+    public float atk = 5;
+    public float hp = 10;
 
     private void OnDrawGizmos()
     {
@@ -46,15 +49,18 @@ public class enmy : MonoBehaviour
         {
             attack();
         }
-        else
-        {
-            Vector3 pos = trak.position;
-            pos.y = transform.position.y;
-            transform.LookAt(pos);
-        }
     }
 
-    public void attack()
+
+    public void dmg(float damage)
+    {
+        hp -= damage;
+        if (hp <= 0)
+        {
+            die();
+        }
+    }
+        public void attack()
     {
         if(nav.remainingDistance < spdstop)
         {
@@ -71,7 +77,7 @@ public class enmy : MonoBehaviour
 
                 if(Physics.Raycast(atkpt.position, atkpt.forward, out rhit, atkln, 1 << 8))
                 {
-                    rhit.collider.GetComponent<player>().dmg();
+                    rhit.collider.GetComponent<player>().dmg(atk);
                 }
             }
         }
@@ -84,11 +90,12 @@ public class enmy : MonoBehaviour
         nav.SetDestination(player.position);
         ani.SetBool("walk" ,nav.remainingDistance> spdstop);
         }
-        else
-        {
-            nav.SetDestination(trak.position);
-            ani.SetBool("walk", nav.remainingDistance > spdstop);
-        }
+    }
 
+    public void die()
+    {
+        nav.isStopped = true;
+        enabled = false;
+        ani.SetTrigger("die");
     }
 }
